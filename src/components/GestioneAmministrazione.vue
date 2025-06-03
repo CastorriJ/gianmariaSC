@@ -1,15 +1,27 @@
 <script>
+
+import { useLoginStore } from '../stores/login'
+import { ref } from 'vue'
+
 export default {
     props: { Cartelle:Object},
     data() {
         return {
             //DbStudenti:  this.Cartelle.file['DB_STUDENTIURL'],
-            
+           
         }
     },
-    emits: ["change-status"]    
+    methods: {
+        async creaCartelle() {
+            const loginStore = useLoginStore();
+            const res = await loginStore.creaCartelleInizioAnno();
+            console.log(res);
+    },
+    emits: ["change-status"] 
+}   
 }
 </script>
+
 
 <style>
 iframe {
@@ -18,6 +30,7 @@ iframe {
     border-radius: 25px;
 }
 </style>
+
 
 <template>
     <div class="container-fluid my-3">
@@ -42,15 +55,15 @@ iframe {
         </div>
         <h4>Operazioni di inzio anno:</h4>
         <div style="display: flex; align-items: center; gap: 8px;">
-            <h4>Crea cartelle per verbali (cdc e dipartimenti)</h4> 
-            <button class="azzurro-button">Crea</button>
+            <h4>Crea cartelle per verbali (cdc e dipartimenti)</h4>
+            <button @click="creaCartelle" class="azzurro-button">Crea</button>
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-            <h4>Archivia i dati degli STUDENTI dell'anno precedente</h4> 
+            <h4>Archivia i dati degli STUDENTI dell'anno precedente</h4>
             <button class="azzurro-button">Archivia</button>
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-            <h4>Archivia i dati degli DOCENTI dell'anno precedente</h4> 
+            <h4>Archivia i dati degli DOCENTI dell'anno precedente</h4>
             <button class="azzurro-button">Archivia</button>
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
@@ -63,6 +76,7 @@ iframe {
         </div>
     </div>
 </template>
+
 
 <style scoped>
 .circle {
@@ -77,15 +91,18 @@ iframe {
     font-size: 150px;
 }
 
+
 .backArrow{
     border-width: 40px;
     border-radius: 50px;
 }
 
+
 iframe {
     width: 85%;
     height: 900px;
 }
+
 
 .backArrow:hover{
     transform: scale(1.05);
@@ -94,18 +111,22 @@ iframe {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
+
 .linkModelli {
     color: #000000;
 }
+
 
 input {
   background-color: #266874;
   color: #78c3ce;
 }
 
+
 input:focus {
   background-color: #21575f;
 }
+
 
 .azzurro-button {
   background: linear-gradient(135deg,rgb(27, 52, 95) 0%,rgb(79, 107, 200) 100%);
@@ -122,11 +143,13 @@ input:focus {
   user-select: none;
 }
 
+
 .azzurro-button:hover {
   background: linear-gradient(135deg,rgb(43, 56, 110) 0%,rgb(67, 112, 151) 100%);
   box-shadow: 0 6px 14px rgba(0, 159, 255, 0.4);
   transform: translateY(-2px);
 }
+
 
 .azzurro-button:active {
   transform: translateY(0px);
@@ -134,3 +157,4 @@ input:focus {
 }
 
 </style>
+
