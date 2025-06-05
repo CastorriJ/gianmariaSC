@@ -1,13 +1,21 @@
 <script>
+import { useLoginStore } from '../stores/login'
+
 export default {
     props: { Cartelle:Object},
     data() {
         return {
-            //DbStudenti:  this.Cartelle.file['DB_STUDENTIURL'],
-            
+            //DbStudenti: this.Cartelle.file['DB_STUDENTIURL'],
+            LinkDBSacroCuore: this.Cartelle['LinkDBSacroCuore']            
         }
     },
-    emits: ["change-status"]    
+    methods: {
+        async creaCartelle() {
+            const loginStore = useLoginStore();
+            loginStore.creaCartelleInizioAnno();
+        }
+    },
+    emits: ["change-status"]   
 }
 </script>
 
@@ -38,12 +46,13 @@ iframe {
            <!-- <iframe :src="this.DbStudenti" style="height: 1000px;"></iframe> -->
         <div style="display: flex; align-items: center; gap: 8px;">
             <h3 style="margin: 0;">Gestione generale (link al database):</h3>
-            <a class="linkModelli" href="https://docs.google.com/spreadsheets/d/1nLs1QG_mIVCHyyKo1FwhZy5aTBui5Iyr9ETNAney5Tg/edit?gid=764931472#gid=764931472" target="_blank" rel="noopener noreferrer">clicca qui</a>
+            <a class="linkModelli" :href="LinkDBSacroCuore" target="_blank" rel="noopener noreferrer">clicca qui</a>
         </div>
+
         <h4>Operazioni di inzio anno:</h4>
         <div style="display: flex; align-items: center; gap: 8px;">
             <h4>Crea cartelle per verbali (cdc e dipartimenti)</h4> 
-            <button class="azzurro-button">Crea</button>
+            <button @click="creaCartelle" class="azzurro-button">Crea</button>
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
             <h4>Archivia i dati degli STUDENTI dell'anno precedente</h4> 
