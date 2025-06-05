@@ -212,8 +212,13 @@ export const useLoginStore = defineStore('login', () => {
     return await request('upLoadImpegni', payload);
   }
 
+<<<<<<< HEAD
   async function creaCartelleInizioAnno() {
     return await request('createClassFolder', {})
+=======
+   async function creaCartelleInizioAnno() {
+    return await request('createClassFolder')
+>>>>>>> 4e4ab1dd6668e78c154a321250b102f3746b966f
   }
 
   return { log, deleteUser, fetchAllUsers, editPermissions, fetchEvents, transmitOpendayData, transmitMinistageData, transmitSummerStageData, recuperoDatiCartelle, addNewUser, updatePassword, inizializzazioneCartelle, cloneTemplateAiutanti, recuperoProgFromID, cloneTemplateAiutantiMiniStage, recuperaDate, datiNuovoImpegno, upLoadImpegno, creaCartelleInizioAnno }

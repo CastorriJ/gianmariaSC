@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script>
 import { useLoginStore } from '../stores/login'
 
@@ -143,3 +144,5 @@ input:focus {
 }
 
 </style>
+=======
+>>>>>>> 4e4ab1dd6668e78c154a321250b102f3746b966f
