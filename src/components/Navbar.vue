@@ -41,7 +41,7 @@ export default {
                         <a class="nav-link" @click="$emit('change-status', 'gestioneVerbali')" v-if="this.sessionStorage.Ruolo !== 'viewer'">Gestione Verbali</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" @click="$emit('change-status', 'gestioneAmministrazione')" v-if="this.sessionStorage.Ruolo !== 'viewer'">Amministratore</a>
+                        <a class="nav-link" @click="$emit('change-status', 'gestioneAmministrazione')" v-if="this.sessionStorage.Ruolo !== 'viewer'">Amministrazione</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" @click="$emit('change-status', 'gestioneTemplate')" v-if="this.sessionStorage.Ruolo !== 'viewer'">Gestione Template</a>

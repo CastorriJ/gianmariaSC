@@ -260,6 +260,20 @@ export const useLoginStore = defineStore('login', () => {
     return await request('caricaDatiDocentiClassi')
   }
 
+  async function verificaDatiStudenti() {
+    return await request('verificaDatiStudenti')
+  }
+
+
+  async function verificaDatiDocenti() {
+    return await request('verificaDatiDocenti')
+  }
+
+
+  async function verificaDatiDocentiClassi() {
+    return await request('verificaDatiDocentiClassi')
+  }
+
   return {
     log,
     deleteUser,
@@ -283,6 +297,9 @@ export const useLoginStore = defineStore('login', () => {
     caricaDatiStudenti,
     caricaDatiDocenti,
     caricaDatiDocentiClassi,
+    verificaDatiStudenti,
+    verificaDatiDocenti,
+    verificaDatiDocentiClassi,
     deleteImpegno,
     condividiImpegno,
     CreaCloneVerAree

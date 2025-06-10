@@ -76,15 +76,15 @@ export default {
 <template>
   <div class="fullscreen-wrapper">
     <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb" class="mt-3 ms-5 unselectable breadcrumb-nav">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-3 ms-5">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#" @click="$emit('change-status', 'home')">Home</a>
+          <a href="#" style="color: #fff" @click="$emit('change-status', 'home')">Home</a>
         </li>
-        <li class="breadcrumb-item">
-          <a href="#" @click="$emit('change-status', 'gestioneImpegni')">Gestione impegni</a>
+        <li class="breadcrumb-item active" aria-current="page" style="color: #fff">
+          <a href="#" style="color: #fff" @click="$emit('change-status', 'gestioneImpegni')">Gestione impegni</a>
         </li>
-        <li class="breadcrumb-item active">Importa impegno</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: #fff">Importa impegno</li>
       </ol>
     </nav>
 
