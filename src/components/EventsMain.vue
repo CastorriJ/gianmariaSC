@@ -98,7 +98,7 @@ export default {
       <div class="circleArrow backArrow me-2">
         <i class="bi bi-arrow-left small-icon" @click="$emit('change-status', 'home')"></i>
       </div>
-      <p class="fs-4 text-white mb-0 ms-3">Impegni</p>
+      <h2 class="ms-3 text-white">Impegni</h2>
     </div>
 
 

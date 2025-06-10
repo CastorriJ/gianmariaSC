@@ -2,6 +2,7 @@
 import { useLoginStore } from '../stores/login'
 import { ref } from 'vue'
 
+
 export default {
     props: { Cartelle:Object},
     data() {
@@ -16,9 +17,9 @@ export default {
             try {
                 const loginStore = useLoginStore(); // Prima ottieni lo store
                 const res = await loginStore.CreaCloneVerAree(type, URL); // Poi usa il suo metodo
-            
+           
                 if (res.success === true) {
-                    
+                   
                 } else {
                     alert("Errore nella creazione: " + (res.message || "Errore sconosciuto"));
                 }
@@ -30,8 +31,7 @@ export default {
     emits: ["change-status"]    
 }
 </script>
-
-//jessica   
+ 
 <template>
     <div class="container-fluid my-3">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-3 ms-5 unselectable">
@@ -47,19 +47,30 @@ export default {
             <i class="bi bi-arrow-left fs-3" @click="$emit('change-status', 'home')"></i>
         </div>
     </div>
-    <div style="display: flex; align-items: center; gap: 8px;">
-        <h3 style="margin: 0;">Modello verbale cdc:</h3>
-        <a class="linkModelli" :href="Cartelle['LinkVerbaliCDC']">clicca qui</a>
+
+    <div class="container-fluid py-4">
+        <h2 class="section-title mb-4 text-white">Gestione verbali</h2>
+        <div class="card mb-4 panel-card">
+            <div class="card-body">
+
+                <div class="operation-item d-flex align-items-center justify-content-between my-3">
+                    <a class="linkModelli" :href="Cartelle['LinkVerbaliCDC']" target="_blank" rel="noopener noreferrer">Modello verbale cdc</a>
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="azzurro-button" @click="Clona('cdc', Cartelle['LinkVerbaliCDC'])">Crea verbale per ogni classe</button>
+                    </div>
+                </div>
+                
+                <div class="operation-item d-flex align-items-center justify-content-between my-3">
+                    <a class="linkModelli" :href="Cartelle['LinkVerbaliDipartimenti']" target="_blank" rel="noopener noreferrer">Modello verbale dipartimenti</a>
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="azzurro-button" @click="Clona('dipartimenti', Cartelle['LinkVerbaliDipartimenti'])">Crea verbale per ogni dipartimento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <button class="azzurro-button" @click="Clona('cdc', Cartelle['LinkVerbaliCDC'])">Crea verbale per ogni classe</button>  
-    <br>
-    <br>
-    <div style="display: flex; align-items: center; gap: 8px;">
-        <h3 style="margin: 0;">Modello verbale dipartimenti:</h3>
-        <a class="linkModelli" :href="Cartelle['LinkVerbaliDipartimenti']">clicca qui</a>
-    </div>
-    <button class="azzurro-button" @click="Clona('dipartimenti', Cartelle['LinkVerbaliDipartimenti'])">Crea verbale per ogni dipartimento</button>
 </template>
+
 <style scoped>
 .circle {
     width: 40px;
@@ -90,23 +101,102 @@ iframe {
     color: white;
     transition: transform 0.2s, box-shadow 0.2s;
 }
-.linkModelli {
-    color: #0f0f0f;
+
+body {
+    background-color: #2b2e4a;
+    color: #f8f9fa; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Classi cronologia percorso */
+.breadcrumb-item a {
+    color: #fff !important;
+    text-decoration: underline !important;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item.active {
+    color: #fff !important;
+}
+
+/* Titolo della Sezione Principale */
+.section-title {
+    color: #e0f7fa; /* Un colore chiaro per il titolo principale */
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Stile delle Card del Pannello */
+.panel-card {
+    background-color: #f8f9fa; /* Sfondo chiaro per le card */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.panel-card .card-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #2b2e4a; /* Colore scuro per i titoli delle card */
+    border-bottom: 2px solid #e9ecef; /* Linea di separazione sottile */
+    padding-bottom: 0.75rem;
+}
+
+.operation-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #dee2e6; /* Linea divisoria tra le operazioni */
+}
+
+.operation-item:last-child {
+    border-bottom: none; /* Rimuovi la linea dall'ultimo elemento */
+}
+
+.operation-item h5, .operation-item p {
+    color: #343a40; /* Colore scuro per il testo delle operazioni */
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+/* Link ai documenti */
+.linkModelli {
+    color: #343a40; 
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+}
+
+.linkModelli:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Pulsanti Azzurri  */
 .azzurro-button {
   background: linear-gradient(135deg,rgb(27, 52, 95) 0%,rgb(79, 107, 200) 100%);
   border: none;
   border-radius: 8px;
-  padding: 6px 16px;
+  padding: 8px 20px; /* Padding leggermente aumentato */
   color: white;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Dimensione del font leggermente aumentata */
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 159, 255, 0.25);
   transition: all 0.25s ease;
   letter-spacing: 0.04em;
   user-select: none;
+  min-width: 120px; /* Larghezza minima per i pulsanti */
+  text-align: center;
 }
 
 .azzurro-button:hover {
@@ -119,4 +209,13 @@ iframe {
   transform: translateY(0px);
   box-shadow: 0 3px 6px rgba(0, 159, 255, 0.3);
 }
+
+.azzurro-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background: linear-gradient(135deg,rgb(79, 107, 200) 0%,rgb(27, 52, 95) 100%); /* Colore invertito per disabilitato */
+    box-shadow: none;
+    transform: none;
+}
+
 </style>

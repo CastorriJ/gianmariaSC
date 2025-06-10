@@ -269,6 +269,20 @@ async function creaCartelleClassi() {
     return await request('caricaDatiDocentiClassi')
   }
 
+  async function verificaDatiStudenti() {
+    return await request('verificaDatiStudenti')
+  }
+
+
+  async function verificaDatiDocenti() {
+    return await request('verificaDatiDocenti')
+  }
+
+
+  async function verificaDatiDocentiClassi() {
+    return await request('verificaDatiDocentiClassi')
+  }
+
   return {
     log,
     deleteUser,
@@ -293,6 +307,9 @@ async function creaCartelleClassi() {
     caricaDatiStudenti,
     caricaDatiDocenti,
     caricaDatiDocentiClassi,
+    verificaDatiStudenti,
+    verificaDatiDocenti,
+    verificaDatiDocentiClassi,
     deleteImpegno,
     condividiImpegno,
     CreaCloneVerAree
